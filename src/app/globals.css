@@ -1,0 +1,425 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 250 100% 99%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 250 50% 98%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 258 90% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 250 30% 95%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 250 20% 95%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 258 60% 95%;
+    --accent-foreground: 258 70% 40%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 250 20% 90%;
+    --input: 250 20% 90%;
+    --ring: 258 90% 58%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 224 30% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 28% 13%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 28% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 224 30% 10%;
+
+    --secondary: 220 25% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 25% 17%;
+    --muted-foreground: 215 20% 63%;
+
+    --accent: 220 25% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 224 71% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full;
+  background-color: hsl(var(--muted-foreground) / 0.2);
+  transition: background-color 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* ============================================================
+   Glassmorphism utilities
+   ============================================================ */
+.glass {
+  @apply bg-background/60 backdrop-blur-xl border border-border/40 shadow-sm;
+}
+
+.glass-card {
+  @apply bg-card/40 backdrop-blur-2xl border border-border/30 shadow-lg;
+}
+
+.glass-card-hover {
+  @apply bg-card/40 backdrop-blur-2xl border border-border/30 shadow-lg transition-all duration-500;
+}
+.glass-card-hover:hover {
+  @apply bg-card/60 border-border/50 shadow-xl;
+  transform: translateY(-4px);
+}
+
+/* ============================================================
+   Shimmer animation for badges and borders
+   ============================================================ */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted-foreground) / 0.1) 0%,
+    hsl(var(--muted-foreground) / 0.3) 50%,
+    hsl(var(--muted-foreground) / 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   Glow pulse for the profile photo
+   ============================================================ */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3),
+                0 0 60px rgba(139, 92, 246, 0.15),
+                0 0 90px rgba(99, 102, 241, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5),
+                0 0 80px rgba(139, 92, 246, 0.25),
+                0 0 120px rgba(99, 102, 241, 0.1);
+  }
+}
+
+.glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ============================================================
+   Gradient border animation
+   ============================================================ */
+@keyframes gradient-rotate {
+  0% {
+    --angle: 0deg;
+  }
+  100% {
+    --angle: 360deg;
+  }
+}
+
+/* ============================================================
+   Float animation
+   ============================================================ */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   Gradient text utility
+   ============================================================ */
+.gradient-text {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+}
+
+.gradient-text-blue {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+}
+
+/* ============================================================
+   Orbit animation for decorative elements
+   ============================================================ */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(var(--orbit-radius, 180px)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(var(--orbit-radius, 180px)) rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit var(--orbit-duration, 20s) linear infinite;
+}
+
+/* ============================================================
+   Stat counter glow
+   ============================================================ */
+.stat-glow {
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+/* ============================================================
+   NEW: Pulse dot animation for availability badge
+   ============================================================ */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.8);
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   NEW: Animated gradient border
+   ============================================================ */
+@keyframes gradient-border-spin {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.animated-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #3b82f6,
+    #6366f1,
+    #8b5cf6,
+    #a855f7,
+    #6366f1,
+    #3b82f6
+  );
+  background-size: 300% 100%;
+  animation: gradient-border-spin 4s linear infinite;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.animated-gradient-border:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================
+   NEW: Grain / noise texture overlay
+   ============================================================ */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 1;
+  animation: grain 8s steps(10) infinite;
+}
+
+/* ============================================================
+   NEW: Magnetic hover effect for buttons
+   ============================================================ */
+.magnetic-hover {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.magnetic-hover:hover {
+  transform: translateY(-2px);
+}
+
+.magnetic-hover:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* ============================================================
+   NEW: Text shine effect
+   ============================================================ */
+@keyframes text-shine {
+  0% {
+    background-position: -100% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.text-shine {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--foreground)) 0%,
+    hsl(258 90% 58%) 50%,
+    hsl(var(--foreground)) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shine 4s linear infinite;
+}
+
+/* ============================================================
+   NEW: Glassmorphism card with inner glow
+   ============================================================ */
+.glass-card-premium {
+  @apply bg-card/30 backdrop-blur-2xl border border-border/20 shadow-lg;
+  box-shadow: 
+    0 0 0 1px hsl(var(--border) / 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.03),
+    0 10px 15px -3px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
+}
+
+.glass-card-premium:hover {
+  box-shadow: 
+    0 0 0 1px hsl(var(--border) / 0.2),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 20px 25px -5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================================
+   NEW: Smooth reveal animation for sections
+   ============================================================ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.animate-reveal-up {
+  animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ============================================================
+   NEW: Wave separator for footer
+   ============================================================ */
+.wave-separator {
+  position: relative;
+}
+
+.wave-separator::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, hsl(var(--background)));
+}
+
+/* Selection color */
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+  color: inherit;
+}
