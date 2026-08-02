@@ -67,6 +67,6 @@ export const projetMrMalackCaseStudy: CaseStudy = {
     'Mise en place de la traçabilité distribuée (Zipkin / Sleuth)',
   ],
   github: 'https://github.com/mouhamadourassoulndoye/Projet_Mr_Malack.git',
-  demoVideo: '/videos/projet-mr-malack-demo.webm',
+  demoVideo: 'https://youtu.be/A7hrOPmSvHE',
   color: '#dd0031',
 };

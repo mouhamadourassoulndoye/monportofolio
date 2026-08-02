@@ -71,6 +71,6 @@ export const calendrierReactCaseStudy: CaseStudy = {
     'Partage de calendriers entre utilisateurs',
   ],
   github: 'https://github.com/mouhamadourassoulndoye/Calendrier_Planification-React-JS-',
-  demoVideo: '/videos/calendrier-planification-demo.mp4',
+  demoVideo: 'https://youtu.be/A7hrOPmSvHE',
   color: '#6366f1',
 };

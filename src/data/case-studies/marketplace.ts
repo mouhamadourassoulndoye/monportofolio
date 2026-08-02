@@ -88,6 +88,6 @@ export const marketplaceCaseStudy: CaseStudy = {
     'Ajout d\'un système de recommandation basé sur le machine learning',
   ],
   github: 'https://github.com/mouhamadourassoulndoye/marketplace',
-  demoVideo: '/videos/marketplacedemo.mp4',
+  demoVideo: 'https://youtube.com/shorts/vaL-XZ93Xms?feature=share',
   color: '#6366f1',
 };
