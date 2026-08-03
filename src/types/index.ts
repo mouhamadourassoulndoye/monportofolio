@@ -136,6 +136,7 @@ export interface SiteConfig {
     github: string;
     linkedin: string;
     email: string;
+    phone?: string;
   };
   author: {
     name: string;

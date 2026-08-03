@@ -5,7 +5,7 @@
 // ============================================================
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { SectionHeader } from '@/components/shared/section-header';
 import { ContactForm } from '@/components/forms/contact-form';
 import { PageTransition } from '@/components/layout/page-transition';
@@ -58,6 +58,22 @@ export function ContactContent() {
                     <p className="text-base font-semibold text-foreground">{siteConfig.links.email}</p>
                   </div>
                 </motion.a>
+
+                {siteConfig.links.phone && (
+                  <motion.a
+                    variants={fadeInUp}
+                    href={`tel:${siteConfig.links.phone}`}
+                    className="group flex items-center gap-4 p-4 rounded-2xl border border-border/50 bg-card/30 hover:border-border/80 transition-all duration-300"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10 border border-green-500/20 text-green-500 group-hover:scale-110 transition-transform duration-300">
+                      <Phone className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-muted-foreground">Téléphone</p>
+                      <p className="text-base font-semibold text-foreground">{siteConfig.links.phone}</p>
+                    </div>
+                  </motion.a>
+                )}
 
                 <motion.div
                   variants={fadeInUp}

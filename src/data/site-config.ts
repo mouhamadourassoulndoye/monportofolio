@@ -21,5 +21,6 @@ export const siteConfig: SiteConfig = {
     github: 'https://github.com/mouhamadourassoulndoye',
     linkedin: 'https://www.linkedin.com/in/mouhamed-ndoye-36a772338',
     email: 'm.n115@zig.univ.sn',
+    phone: '+221 76 573 32 34',
   },
 };
